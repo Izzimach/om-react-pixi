@@ -1,0 +1,40 @@
+(defproject om-react-pixi "0.1.0-EXPERIMENTAL"
+  :description "ClojureScript definitions for using om with react-pixi"
+  :url "http://example.com/FIXME"
+  :license {:name "Apache 2.0"
+            :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
+  :plugins [[lein-cljsbuild "1.0.2"]]
+
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2202"]
+                 [ring/ring-core "1.2.2"]
+                 [ring/ring-jetty-adapter "1.2.2"]
+                 [om "0.6.4"]]
+
+  :plugins [[lein-cljsbuild "1.0.3"]
+            [lein-ring "0.8.10"]]
+
+  :ring {:handler webserver.core/statichandler :port 8081 }
+
+
+  :cljsbuild {
+              :builds [{:id "dev"
+                        :source-paths ["src/omreactpixi"]
+                        :compiler {
+                                   :output-to "om-react-pixi.js"
+                                   :output-dir "out"
+                                   :optimizations :none
+                                   :source-map true}}
+                       {:id "packed"
+                        ;; vendor is added to the source paths so that
+                        ;; :preamble can find react-pixi.js
+                        :source-paths ["src/omreactpixi" "vendor"]
+                        :compiler {
+                                   :output-to "om-react-pixi.min.js"
+                                   :output-dir "out-min"
+                                   :optimizations :advanced
+                                   :preamble ["react-pixi.js"]
+                                   :externs ["react-pixi.js"]
+                                   :closure-warnings {:externs-validation :off
+                                                      :non-standard-jsdoc :off}}}]})
+
