@@ -23,6 +23,7 @@ coverage
 
 # leiningen git-deps storage
 .lein-git-deps
+.lein-repl-history
 
 # vim temp files
 *~
