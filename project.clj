@@ -33,8 +33,15 @@
                                    :output-to "om-react-pixi.min.js"
                                    :output-dir "out-min"
                                    :optimizations :advanced
-                                   :preamble ["react-pixi.js"]
+                                   :preamble ["react-pixi.min.js"]
                                    :externs ["react-pixi.js"]
                                    :closure-warnings {:externs-validation :off
-                                                      :non-standard-jsdoc :off}}}]})
+                                                      :non-standard-jsdoc :off}}}
+                       {:id "hello"
+                        :source-paths ["src/omreactpixi" "examples/hello/src"]
+                        :compiler {
+                                   :output-to "examples/hello/hello.js"
+                                   :output-dir "examples/hello/out"
+                                   :source-map true
+                                   :optimizations :none}}]})
 
