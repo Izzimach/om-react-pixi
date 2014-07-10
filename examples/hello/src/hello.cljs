@@ -8,6 +8,11 @@
 
 (def appstate (atom {:text "argh!"}))
 
+(defn simplestage [cursor]
+  (om/component
+   (pixi/stage
+    #js {:width 400 :height 300}
+    (pixi/text #js {:x 100 :y 100 :text "argh!"}))))
 
 (defn autostage [cursor]
   (let [opts #js {:width 400 :height 300}
@@ -23,7 +28,7 @@
 
 
 (defn starthelloworld [appstate elementid]
-  (om/root autostage appstate
+  (om/root simplestage appstate
            {:target (.getElementById js/document elementid)}))
 
 
