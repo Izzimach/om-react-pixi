@@ -21,7 +21,7 @@
               :builds [{:id "dev"
                         :source-paths ["src/omreactpixi"]
                         :compiler {
-                                   :output-to "om-react-pixi.js"
+                                   :output-to "out/om-react-pixi.js"
                                    :output-dir "out"
                                    :optimizations :none
                                    :source-map true}}
@@ -30,7 +30,7 @@
                         ;; :preamble can find react-pixi.js
                         :source-paths ["src/omreactpixi" "vendor"]
                         :compiler {
-                                   :output-to "om-react-pixi.min.js"
+                                   :output-to "out-min/om-react-pixi.min.js"
                                    :output-dir "out-min"
                                    :optimizations :advanced
                                    :preamble ["react-pixi.min.js"]

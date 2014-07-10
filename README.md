@@ -1,4 +1,4 @@
 om-react-pixi
 =============
 
-Bindings for om to let you control pixi sprites from clojurescript.
+Bindings for om to let you create and control pixi sprites from clojurescript.
