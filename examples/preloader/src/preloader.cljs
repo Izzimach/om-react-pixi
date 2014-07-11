@@ -52,7 +52,7 @@
   [app owner]
   (let [loadopts #js {:width 400 :height 300 :backgroundcolor 16rff00ff}
         mainopts #js {:width 400 :height 300 :backgroundcolor 16r00ffff}
-        textopts #js {:x 100 :y 100 :key "ack" :text "Blankity-blank!"}]
+        textopts #js {:x 100 :y 100 :key "ack" :text "Assets loaded!"}]
     (reify
       om/IInitState
       (init-state [_] {:preloading (contains? (om/get-props owner) :preloadmanifest)})
@@ -68,9 +68,9 @@
       (display-name [_] "Autostage"))))
 
 
-(defn starthelloworld [appstate elementid]
+(defn startpreloader [appstate elementid]
   (om/root autostage appstate
            {:target (.getElementById js/document elementid)}))
 
 
-(starthelloworld appstate "my-app")
+(startpreloader appstate "my-app")

@@ -38,14 +38,12 @@
   (reify
     om/IRender
     (render [_]
-            (let [width (:width app)
-                  height (:height app)]
-              (pixi/stage
-               #js {:width width :height height}
+            (let [{:keys [width height xposition topping]} app]
+              (pixi/stage #js {:width width :height height}
                (pixi/tilingsprite #js {:image (assetpath "bg_castle.png") :width width :height height :key 1})
-               (om/build cupcakecomponent {:topping (:topping app) :xposition (:xposition app) :ref "cupcake" :key 2})
-               (pixi/text #js {:text "Vector text" :x (:xposition app) :y 10 :style #js {:font "40px Times"} :anchor (PIXI.Point. 0.5 0) :key 3})
-               (pixi/bitmaptext #js {:text "Bitmap text" :x (:xposition app) :y 180 :tint 16rff88ff88 :style #js {:font "40 Comic_Neue_Angular"} :key 4}))))
+               (om/build cupcakecomponent {:topping topping :xposition xposition :ref "cupcake" :key 2})
+               (pixi/text #js {:text "Vector text" :x xposition :y 10 :style #js {:font "40px Times"} :anchor (PIXI.Point. 0.5 0) :key 3})
+               (pixi/bitmaptext #js {:text "Bitmap text" :x xposition :y 180 :tint 16rff88ff88 :style #js {:font "40 Comic_Neue_Angular"} :key 4}))))
     om/IDisplayName
     (display-name [_] "CupcakeStage")))
 

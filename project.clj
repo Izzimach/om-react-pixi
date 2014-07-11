@@ -51,5 +51,12 @@
                                    :output-to "examples/cupcake/out/cupcake.js"
                                    :output-dir "examples/cupcake/out"
                                    :source-map true
+                                   :optimizations :none}}
+                       {:id "preloader"
+                        :source-paths ["src/omreactpixi" "examples/preloader/src"]
+                        :compiler {
+                                   :output-to "examples/preloader/out/preloader.js"
+                                   :output-dir "examples/preloader/out"
+                                   :source-map true
                                    :optimizations :none}}]})
 
