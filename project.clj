@@ -41,14 +41,14 @@
                        {:id "hello"
                         :source-paths ["src/omreactpixi" "examples/hello/src"]
                         :compiler {
-                                   :output-to "examples/hello/hello.js"
+                                   :output-to "examples/hello/out/hello.js"
                                    :output-dir "examples/hello/out"
                                    :source-map true
                                    :optimizations :none}}
                        {:id "cupcake"
                         :source-paths ["src/omreactpixi" "examples/cupcake/src"]
                         :compiler {
-                                   :output-to "examples/cupcake/cupcake.js"
+                                   :output-to "examples/cupcake/out/cupcake.js"
                                    :output-dir "examples/cupcake/out"
                                    :source-map true
                                    :optimizations :none}}]})
