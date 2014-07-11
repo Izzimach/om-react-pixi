@@ -7,6 +7,7 @@
 
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/clojurescript "0.0-2202"]
+                 [org.clojure/core.async "0.1.267.0-0d7780-alpha"]
                  [ring/ring-core "1.2.2"]
                  [ring/ring-jetty-adapter "1.2.2"]
                  [om "0.6.4"]]
@@ -42,6 +43,13 @@
                         :compiler {
                                    :output-to "examples/hello/hello.js"
                                    :output-dir "examples/hello/out"
+                                   :source-map true
+                                   :optimizations :none}}
+                       {:id "cupcake"
+                        :source-paths ["src/omreactpixi" "examples/cupcake/src"]
+                        :compiler {
+                                   :output-to "examples/cupcake/cupcake.js"
+                                   :output-dir "examples/cupcake/out"
                                    :source-map true
                                    :optimizations :none}}]})
 

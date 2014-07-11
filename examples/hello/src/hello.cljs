@@ -1,4 +1,4 @@
-(ns omreactpixi.hello
+(ns omreactpixi.examples.hello
   (:require-macros [omreactpixi.core :as orp])
   (:require [goog.events :as events]
             [om.core :as om :include-macros true]
