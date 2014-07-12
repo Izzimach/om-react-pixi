@@ -1,0 +1,18 @@
+The Comic Neue font is public domain create by Craig Rozynski (comicneue.com)
+
+The following bitmap font files derived from Comic Neue are public domain:
+ - examples/assets/comic_neue_angular_bold.fnt
+ - examples/assets/comic_neue_angular_bold_0.png
+
+The following graphics files in examples/assets are CC0 (public domain), created by Kenney Vleugels (www.kenney.nl):
+ - bg_castle.png
+ - cupCake.png
+ - creamChoco.png
+ - creamMocha.png
+ - creamPink.png
+ - creamVanilla.png
+
+The following files are Copyright 2013-2014 Mathew Groves and included under the MIT License:
+ - vendor/pixi.js
+ - vendor/pixi.dev.js
+
