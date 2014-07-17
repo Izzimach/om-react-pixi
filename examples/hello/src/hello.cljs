@@ -1,9 +1,8 @@
 (ns omreactpixi.examples.hello
-  (:require-macros [omreactpixi.core :as orp])
   (:require [goog.events :as events]
             [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
-            [omreactpixi.core :as pixi]
+            [omreactpixi.core :as pixi :include-macros true]
             [clojure.string :as string]))
 
 (def appstate (atom {:text "argh!"}))

@@ -1,12 +1,11 @@
 (ns omreactpixi.examples.cupcake
-  (:require-macros [omreactpixi.core :as orp]
-                   [cljs.core.async.macros :refer [go]])
+  (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [goog.events :as events]
             [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
+            [omreactpixi.core :as pixi :include-macros true]
             [clojure.string :as string]
-            [cljs.core.async :as async :refer [>! <! put!]]
-            [omreactpixi.core :as pixi]))
+            [cljs.core.async :as async :refer [>! <! put!]]))
 
 
 (defn assetpath [name] (str "../assets/" name))
