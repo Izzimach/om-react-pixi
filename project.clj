@@ -1,16 +1,18 @@
-(defproject om-react-pixi "0.1.0-EXPERIMENTAL"
+(defproject org.clojars.haussman/om-react-pixi "0.1.0-SNAPSHOT"
   :description "ClojureScript definitions for using om with react-pixi"
-  :url "http://example.com/FIXME"
+  :url "https://github.com/Izzimach/om-react-pixi"
   :license {:name "Apache 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
   :plugins [[lein-cljsbuild "1.0.2"]]
 
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2202"]
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojurescript "0.0-2277"]
                  [org.clojure/core.async "0.1.267.0-0d7780-alpha"]
                  [ring/ring-core "1.2.2"]
                  [ring/ring-jetty-adapter "1.2.2"]
-                 [om "0.6.4"]]
+                 [om "0.7.0"]
+                 [prismatic/schema "0.2.4"]
+                 [prismatic/om-tools "0.2.2"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.10"]]
@@ -50,8 +52,18 @@
                         :compiler {
                                    :output-to "examples/cupcake/out/cupcake.js"
                                    :output-dir "examples/cupcake/out"
-                                   :source-map true
-                                   :optimizations :none}}
+                                   :optimizations :none
+                                   :source-map true}}
+                       {:id "cupcake-minimized"
+                        :source-paths ["src/omreactpixi" "examples/cupcake/src"]
+                        :compiler {
+                                   :output-to "examples/cupcake/out-min/cupcake.js"
+                                   :output-dir "examples/cupcake/out-min"
+                                   :externs ["vendor/react-pixi.min.js" "vendor/pixi.dev.js"]
+                                   :optimizations :advanced
+                                   :pretty-print false
+                                   :closure-warnings {:externs-validation :off
+                                                      :non-standard-jsdoc :off}}}
                        {:id "preloader"
                         :source-paths ["src/omreactpixi" "examples/preloader/src"]
                         :compiler {
