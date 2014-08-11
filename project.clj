@@ -12,7 +12,7 @@
                  [ring/ring-jetty-adapter "1.2.2"]
                  [om "0.7.0"]
                  [prismatic/schema "0.2.4"]
-                 [prismatic/om-tools "0.2.2"]]
+                 [prismatic/om-tools "0.3.0"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.10"]]
