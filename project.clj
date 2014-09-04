@@ -70,5 +70,12 @@
                                    :output-to "examples/preloader/out/preloader.js"
                                    :output-dir "examples/preloader/out"
                                    :source-map true
+                                   :optimizations :none}}
+                       {:id "interactive"
+                        :source-paths ["src/omreactpixi" "examples/interactive/src"]
+                        :compiler {
+                                   :output-to "examples/interactive/out/interactive.js"
+                                   :output-dir "examples/interactive/out"
+                                   :source-map true
                                    :optimizations :none}}]})
 
