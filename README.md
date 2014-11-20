@@ -1,6 +1,8 @@
 om-react-pixi
 =============
 
+![Interactive example](docs/clickablesprites.png)
+
 Bindings for om to let you create and control pixi sprites from clojurescript.
 
 A simple example displaying text on a 400px by 300px (possibly WebGL) canvas:
@@ -23,3 +25,19 @@ Includes the standard items from PixiJS:
 - Text
 - BitmapText
 - DisplayObjectContainer
+
+## Running the examples
+
+Build the examples using cljsbuild
+
+```
+lein cljsbuild once
+```
+
+The interactive example can be driven by figwheel, allowing you to edit the interactive
+example source and auto-reload
+
+```
+lein figwheel interactive
+```
+
