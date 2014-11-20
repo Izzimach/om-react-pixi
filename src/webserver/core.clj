@@ -5,11 +5,11 @@
 (defn handler [request]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body "Hello World argh"})
+   :body (System/getProperty "user.dir") })
 
 (def statichandler
    (-> handler
-       (wrap-file ".")
+       (wrap-file (System/getProperty "user.dir"))
        (wrap-file-info)))
 
 

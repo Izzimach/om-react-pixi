@@ -15,7 +15,8 @@
             [om-tools.core :refer-macros [defcomponentk]]
             [omreactpixi.abbrev :as pixi]
             [clojure.string :as string]
-            [cljs.core.async :as async :refer [>! <! put!]]))
+            [cljs.core.async :as async :refer [>! <! put!]]
+            [figwheel.client :as fw :include-macros true]))
 
 (defn assetpath [asset] (str "../assets/" asset))
 
@@ -27,10 +28,7 @@
 ;; we support both adding and removing sprites
 ;;
 
-(def appstate (atom {:width 100 :height 100 :sprites (sorted-map)}))
-
-@appstate
-
+(defonce appstate (atom {:width 100 :height 100 :sprites (sorted-map)}))
 
 (defn addrandomsprite
   "Returns a new app state containing an additional randomly-placed sprite."
@@ -106,9 +104,14 @@
 
 ;; gotta load the bitmap font first or else pixi bombs out
 
+
 (let [inset #(- % 16)
       w (-> js/window .-innerWidth inset)
       h (-> js/window .-innerHeight inset)
       fontloader (PIXI.BitmapFontLoader. (assetpath "comic_neue_angular_bold.fnt"))]
   (.on fontloader "loaded" #(startinteractiveapp w h))
   (.load fontloader))
+
+;; enable dynamic reloading via figwheel
+(fw/watch-and-reload
+  :jsload-callback (fn [] (print "reloaded!")))
