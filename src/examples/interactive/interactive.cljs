@@ -104,13 +104,16 @@
 
 ;; gotta load the bitmap font first or else pixi bombs out
 
+(defonce needloadfonts (atom true))
 
-(let [inset #(- % 16)
-      w (-> js/window .-innerWidth inset)
-      h (-> js/window .-innerHeight inset)
-      fontloader (PIXI.BitmapFontLoader. (assetpath "comic_neue_angular_bold.fnt"))]
-  (.on fontloader "loaded" #(startinteractiveapp w h))
-  (.load fontloader))
+(when @needloadfonts
+  (let [inset #(- % 16)
+        w (-> js/window .-innerWidth inset)
+        h (-> js/window .-innerHeight inset)
+        fontloader (PIXI.BitmapFontLoader. (assetpath "comic_neue_angular_bold.fnt"))]
+    (.on fontloader "loaded" #(startinteractiveapp w h))
+    (.load fontloader)
+    (swap! needloadfonts (fn [_] false))))
 
 ;; enable dynamic reloading via figwheel
 (fw/watch-and-reload
