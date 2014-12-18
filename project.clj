@@ -7,14 +7,15 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2277"]
                  [org.clojure/core.async "0.1.267.0-0d7780-alpha"]
-                 [ring/ring-core "1.2.2"]
-                 [ring/ring-jetty-adapter "1.2.2"]
-		 [compojure "1.3.1"]
                  [om "0.7.1"]
-		 [org.clojars.haussman/react-pixi "0.1.0-SNAPSHOT"]
+		             [org.clojars.haussman/react-pixi "0.1.0-SNAPSHOT"]
                  [prismatic/schema "0.2.4"]
-                 [prismatic/om-tools "0.3.6"]
-                 [figwheel "0.1.5-SNAPSHOT"]]
+                 [prismatic/om-tools "0.3.6"]]
+
+  :profiles {:dev {:dependencies [[figwheel "0.1.5-SNAPSHOT"]
+                                  [ring/ring-core "1.2.2"]
+                                  [ring/ring-jetty-adapter "1.2.2"]
+                                  [compojure "1.3.1"]]}}
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-figwheel "0.1.5-SNAPSHOT"]
