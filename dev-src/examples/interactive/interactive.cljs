@@ -97,20 +97,26 @@
 ;; entry/start code
 ;;
 
-(defn startinteractiveapp [w h]
-  (swap! appstate #(-> % (assoc :width w) (assoc :height h)))
-  (om/root interactivestage appstate
-           {:target (.getElementById js/document "my-app")}))
+(defn startinteractiveapp []
+  (let [inset #(- % 16)
+        w (-> js/window .-innerWidth inset)
+        h (-> js/window .-innerHeight inset)]
+    (swap! appstate #(-> % (assoc :width w) (assoc :height h)))
+    (om/root interactivestage appstate
+             {:target (.getElementById js/document "my-app")})))
 
 ;; gotta load the bitmap font first or else pixi bombs out
+(defonce needtopreload (atom true))
 
+(defn preloadthenstart [startfunc]
+  (let [fontloader (PIXI.BitmapFontLoader. (assetpath "comic_neue_angular_bold.fnt"))]
+    (swap! needtopreload (fn [_] false))
+    (.on fontloader "loaded" startfunc)
+    (.load fontloader)))
 
-(let [inset #(- % 16)
-      w (-> js/window .-innerWidth inset)
-      h (-> js/window .-innerHeight inset)
-      fontloader (PIXI.BitmapFontLoader. (assetpath "comic_neue_angular_bold.fnt"))]
-  (.on fontloader "loaded" #(startinteractiveapp w h))
-  (.load fontloader))
+(if @needtopreload
+  (preloadthenstart startinteractiveapp)
+  (startinteractiveapp))
 
 ;; enable dynamic reloading via figwheel
 (fw/watch-and-reload

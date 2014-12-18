@@ -12,10 +12,14 @@
             [om-tools.core :as omtools :include-macros true]
             [omreactpixi.abbrev :as pixi]
             [clojure.string :as string]
-            [cljs.core.async :as async :refer [>! <! put!]]))
+            [cljs.core.async :as async :refer [>! <! put!]]
+            [figwheel.client :as fw]))
 
 
 (defn assetpath [name] (str "../assets/" name))
+
+(enable-console-print!)
+
 
 (def flavormapping
   {
@@ -45,15 +49,31 @@
   (display-name [_] "CupcakeStage"))
 
 
-(defn startcupcakes [w h]
-  (om/root cupcakestage  {:width w :height h :xposition 100 :topping :vanilla}
-           {:target (.getElementById js/document "my-app")}))
+(defonce appstate (atom {:width 0 :height 0 :xposition 100 :topping :vanilla}))
+
+(defn startcupcakes []
+  (let [inset #(- % 16)
+        w (-> js/window .-innerWidth inset)
+        h (-> js/window .-innerHeight inset)]
+    (swap! appstate #(-> % (assoc :width w) (assoc :height h)))
+    (om/root cupcakestage appstate
+             {:target (.getElementById js/document "my-app")})))
+
 
 ;; gotta load the bitmap font first or else pixi bombs out
+(defonce needtopreload (atom true))
 
-(let [inset #(- % 16)
-      w (-> js/window .-innerWidth inset)
-      h (-> js/window .-innerHeight inset)
-      fontloader (PIXI.BitmapFontLoader. (assetpath "comic_neue_angular_bold.fnt"))]
-  (.on fontloader "loaded" #(startcupcakes w h))
-  (.load fontloader))
+(defn preloadthenstart [startfunc]
+  (let [fontloader (PIXI.BitmapFontLoader. (assetpath "comic_neue_angular_bold.fnt"))]
+    (swap! needtopreload (fn [_] false))
+    (.on fontloader "loaded" startfunc)
+    (.load fontloader)))
+
+(if @needtopreload
+  (preloadthenstart startcupcakes)
+  (startcupcakes))
+
+;; enable dynamic reloading via figwheel
+(fw/watch-and-reload
+  :jsload-callback (fn [] (print "reloaded!")))
+

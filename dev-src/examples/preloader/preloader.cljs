@@ -16,7 +16,7 @@
 
 (def preloadlist (map assetpath ["comic_neue_angular_bold.fnt" "creamVanilla.png" "creamChoco.png" "creamPink.png" "creamMocha.png"]))
 
-(def appstate (atom {:text "argh!" :preloadmanifest preloadlist}))
+(defonce appstate (atom {:text "argh!" :preloadmanifest preloadlist}))
 
 
 (defn pixiloadchannel

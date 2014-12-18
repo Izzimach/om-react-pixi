@@ -15,7 +15,8 @@
   :profiles {:dev {:dependencies [[figwheel "0.1.5-SNAPSHOT"]
                                   [ring/ring-core "1.2.2"]
                                   [ring/ring-jetty-adapter "1.2.2"]
-                                  [compojure "1.3.1"]]}}
+                                  [compojure "1.3.1"]]
+                   :source-paths ["src" "dev-src"]}}
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-figwheel "0.1.5-SNAPSHOT"]
@@ -50,41 +51,41 @@
                                    :closure-warnings {:externs-validation :off
                                                       :non-standard-jsdoc :off}}}
                        {:id "hello"
-                        :source-paths ["src/omreactpixi" "src/examples/hello"]
+                        :source-paths ["src/omreactpixi" "dev-src/examples/hello"]
                         :compiler {
-                                   :output-to "resources/public/examples/hello/out/hello.js"
-                                   :output-dir "resources/public/examples/hello/out"
+                                   :output-to "dev-resources/public/examples/hello/out/hello.js"
+                                   :output-dir "dev-resources/public/examples/hello/out"
                                    :source-map true
                                    :optimizations :none}}
                        {:id "cupcake"
-                        :source-paths ["src/omreactpixi" "src/examples/cupcake"]
+                        :source-paths ["src/omreactpixi" "dev-src/examples/cupcake"]
                         :compiler {
-                                   :output-to "resources/public/examples/cupcake/out/cupcake.js"
-                                   :output-dir "resources/public/examples/cupcake/out"
+                                   :output-to "dev-resources/public/examples/cupcake/out/cupcake.js"
+                                   :output-dir "dev-resources/public/examples/cupcake/out"
                                    :optimizations :none
                                    :source-map true}}
                        {:id "cupcake-minimized"
-                        :source-paths ["src/omreactpixi" "src/examples/cupcake"]
+                        :source-paths ["src/omreactpixi" "dev-src/examples/cupcake"]
                         :compiler {
-                                   :output-to "resources/public/examples/cupcake/out-min/cupcake.js"
-                                   :output-dir "resources/public/examples/cupcake/out-min"
+                                   :output-to "dev-resources/public/examples/cupcake/out-min/cupcake.js"
+                                   :output-dir "dev-resources/public/examples/cupcake/out-min"
                                    :externs ["react_pixi/react-pixi.min.js" "react_pixi/pixi.dev.js"]
                                    :optimizations :advanced
                                    :pretty-print false
                                    :closure-warnings {:externs-validation :off
                                                       :non-standard-jsdoc :off}}}
                        {:id "preloader"
-                        :source-paths ["src/omreactpixi" "src/examples/preloader"]
+                        :source-paths ["src/omreactpixi" "dev-src/examples/preloader"]
                         :compiler {
-                                   :output-to "resources/public/examples/preloader/out/preloader.js"
-                                   :output-dir "resources/public/examples/preloader/out"
+                                   :output-to "dev-resources/public/examples/preloader/out/preloader.js"
+                                   :output-dir "dev-resources/public/examples/preloader/out"
                                    :source-map true
                                    :optimizations :none}}
                        {:id "interactive"
-                        :source-paths ["src/omreactpixi" "src/examples/interactive"]
+                        :source-paths ["src/omreactpixi" "dev-src/examples/interactive"]
                         :compiler {
-                                   :output-to "resources/public/examples/interactive/out/interactive.js"
-                                   :output-dir "resources/public/examples/interactive/out"
+                                   :output-to "dev-resources/public/examples/interactive/out/interactive.js"
+                                   :output-dir "dev-resources/public/examples/interactive/out"
                                    :source-map true
                                    :optimizations :none}}]})
 
