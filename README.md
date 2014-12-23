@@ -3,9 +3,10 @@ om-react-pixi
 
 ![Interactive example](docs/clickablesprites.png)
 
-Bindings for om to let you create and control pixi sprites from clojurescript.
+Bindings for om to let you create and control [pixi](https://github.com/GoodBoyDigital/pixi.js/)
+sprites from clojurescript.
 
-A simple example displaying text on a 400px by 300px (possibly WebGL) canvas:
+A simple example displaying text on a 400px by 300px canvas:
 
 ```
 (defn simplestage [cursor]
@@ -14,8 +15,26 @@ A simple example displaying text on a 400px by 300px (possibly WebGL) canvas:
     (pixi/text #js {:x 100 :y 100 :text "argh!"}))))
 ```
 
-Provided Forms
-----
+## How to Include and Use
+
+Include this in your project.clj dependencies:
+
+```
+[org.clojars.haussman/react-pixi "0.1.0-SNAPSHOT"]
+```
+
+Standard components are in the `omreactpixi.core` namespace. There are also abbreviated forms that are based on the
+forms used by [om-tools](https://github.com/Prismatic/om-tools) which are located in `omreactpixi.abbrev`.
+
+In either case you may want to pull in the functions using the `:as` form:
+
+```
+            [omreactpixi.abbrev :as pixi]
+```
+
+so that you can refer to components using (for example) `pixi/stage` or `pixi/sprite`.
+
+## Provided Forms
 
 Includes the standard items from PixiJS:
 
@@ -34,7 +53,7 @@ Build the examples using cljsbuild
 lein cljsbuild once
 ```
 
-The interactive example can be driven by figwheel, allowing you to edit the interactive
+The examples can be driven by figwheel, allowing you to edit the interactive
 example source and auto-reload
 
 ```
