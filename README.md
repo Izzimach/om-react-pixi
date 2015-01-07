@@ -20,8 +20,10 @@ A simple example displaying text on a 400px by 300px canvas:
 Include this in your project.clj dependencies:
 
 ```
-[org.clojars.haussman/react-pixi "0.1.0-SNAPSHOT"]
+[org.clojars.haussman/om-react-pixi "0.2.0-SNAPSHOT"]
 ```
+This will also include [react-pixi](https://github.com/Izzimach/react-pixi/)
+which itself includes react 0.12.2.
 
 Standard components are in the `omreactpixi.core` namespace. There are also abbreviated forms that are based on the
 forms used by [om-tools](https://github.com/Prismatic/om-tools) which are located in `omreactpixi.abbrev`.
