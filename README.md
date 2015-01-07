@@ -3,8 +3,8 @@ om-react-pixi
 
 ![Interactive example](docs/clickablesprites.png)
 
-Bindings for om to let you create and control [pixi](https://github.com/GoodBoyDigital/pixi.js/)
-sprites from clojurescript.
+Bindings for [Om](https://github.com/swannodette/om) to let you create and
+control [Pixi.js](https://github.com/GoodBoyDigital/pixi.js/) sprites from ClojureScript.
 
 A simple example displaying text on a 400px by 300px canvas:
 
@@ -36,7 +36,7 @@ so that you can refer to components using (for example) `pixi/stage` or `pixi/sp
 
 ## Provided Forms
 
-Includes the standard items from PixiJS:
+Includes the standard items from [Pixi.js](https://github.com/GoodBoyDigital/pixi.js/):
 
 - Stage
 - Sprite
@@ -59,4 +59,3 @@ example source and auto-reload
 ```
 lein figwheel interactive
 ```
-
