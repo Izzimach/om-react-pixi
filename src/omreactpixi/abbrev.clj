@@ -10,4 +10,6 @@
         cljname (symbol (clojure.string/lower-case (name tag)))]
     `(defn ~cljname [opts# & children#]
        (let [[opts# children#] (element-args opts# children#)]
-         (apply ~jsname (cljs.core/into-array (cons opts# children#)))))))
+         (apply React.createElement
+                ~jsname
+                (cljs.core/into-array (cons opts# children#)))))))
