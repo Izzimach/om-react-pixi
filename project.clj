@@ -1,16 +1,16 @@
-(defproject org.clojars.haussman/om-react-pixi "0.1.0-SNAPSHOT"
+(defproject org.clojars.haussman/om-react-pixi "0.2.0-SNAPSHOT"
   :description "ClojureScript definitions for using om with react-pixi"
   :url "https://github.com/Izzimach/om-react-pixi"
   :license {:name "Apache 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2277"]
-                 [org.clojure/core.async "0.1.267.0-0d7780-alpha"]
-                 [om "0.7.1"]
-		             [org.clojars.haussman/react-pixi "0.1.0-SNAPSHOT"]
-                 [prismatic/schema "0.2.4"]
-                 [prismatic/om-tools "0.3.6"]]
+                 [org.clojure/clojurescript "0.0-2371"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
+                 [om "0.8.0-rc1"]
+		             [org.clojars.haussman/react-pixi "0.2.0-SNAPSHOT"]
+                 [prismatic/schema "0.3.3"]
+                 [prismatic/om-tools "0.3.10"]]
 
   :profiles {:dev {:dependencies [[figwheel "0.1.5-SNAPSHOT"]
                                   [ring/ring-core "1.2.2"]
@@ -88,4 +88,3 @@
                                    :output-dir "dev-resources/public/examples/interactive/out"
                                    :source-map true
                                    :optimizations :none}}]})
-
