@@ -12,6 +12,7 @@ out
 out-min
 target
 pom.xml
+./-init.clj
 
 # Coverage directory used by tools like istanbul
 coverage
