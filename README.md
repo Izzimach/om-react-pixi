@@ -61,3 +61,13 @@ example source and auto-reload
 ```
 lein figwheel interactive
 ```
+
+## Running Tests
+
+Tests are run inside phantomjs.
+
+```
+npm install phantomjs
+lein cljsbuild test
+```
+
