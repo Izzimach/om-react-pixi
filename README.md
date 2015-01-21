@@ -64,10 +64,10 @@ lein figwheel interactive
 
 ## Running Tests
 
-Tests are run inside phantomjs.
+Tests are run inside slimerjs.
 
 ```
-npm install phantomjs
+npm install slimerjs
 lein cljsbuild test
 ```
 

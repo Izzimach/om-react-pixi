@@ -20,7 +20,8 @@
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-figwheel "0.1.5-SNAPSHOT"]
-            [lein-ring "0.8.10"]]
+            [lein-ring "0.8.10"]
+            [com.cemerick/clojurescript.test "0.3.3"]]
 
   :ring {:handler webserver.servefromjar/reactpixifromjar :port 8081 }
 
@@ -34,9 +35,9 @@
               ;; lein cljsbuild test
               :test-commands {
                               "unit" ["node"
-                                      "node_modules/phantomjs/bin/phantomjs"
-                                      "dev-resources/private/phantomjs/invoke-tests.js"
-                                      "dev-resources/private/html/tests.html"]}
+                                      "node_modules/slimerjs/bin/slimerjs"
+                                      :runner
+                                      "dev-resources/private/out/tests.js"]}
               
               :builds {
                        :dev
@@ -110,5 +111,5 @@
                                    :output-to "dev-resources/private/out/tests.js"
                                    :output-dir "dev-resources/private/out"
                                    :preamble ["react_pixi/pixi.dev.js" "react_pixi/react-pixi.js"]
-                                   :optimizations :whitespace
+                                   :optimizations :simple
                                    :pretty-print true}}}})

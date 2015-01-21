@@ -1,8 +1,3 @@
-(ns tests.core)
+(ns tests.core
+  (:require [cemerick.cljs.test :as t]))
 
-(def success 0)
-
-
-(defn ^:export run []
-  (.log js/console "Example test started.")
-  success)
