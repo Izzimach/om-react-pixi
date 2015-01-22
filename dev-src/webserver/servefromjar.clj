@@ -22,6 +22,6 @@
 
 (defroutes reactpixifromjar
   (resources "/react-pixi" {:root "react_pixi"})
-  (files "/" {:root "resources/public"}))
+  (files "/" {:root "(dev-resources/public|resources/public)"}))
 
 
