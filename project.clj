@@ -39,45 +39,43 @@
                                       :runner
                                       "dev-resources/private/out/tests.js"]}
               
-              :builds {
-                       :dev
+              :builds [
                        {
+                        :id "dev"
                         :source-paths ["src/omreactpixi"]
                         :compiler {
                                    :output-to "out/om-react-pixi.js"
                                    :output-dir "out"
                                    :optimizations :none
                                    :source-map true}}
-                       :packed
                        {
-                        ;; vendor is added to the source paths so that
-                        ;; :preamble can find react-pixi.js
+                        :id "packed"
                         :source-paths ["src/omreactpixi"]
                         :compiler {
                                    :output-to "out-min/om-react-pixi.min.js"
                                    :output-dir "out-min"
                                    :optimizations :advanced
+                                   ;; the react_pixi dir is found inside the react-pixi jar
                                    :preamble ["react_pixi/react-pixi.min.js"]
                                    :externs ["react_pixi/react-pixi.js"]
                                    :closure-warnings {:externs-validation :off
                                                       :non-standard-jsdoc :off}}}
-                       :hello
                        {
+                        :id "hello"
                         :source-paths ["src/omreactpixi" "dev-src/examples/hello"]
                         :compiler {
                                    :output-to "dev-resources/public/examples/hello/out/hello.js"
                                    :output-dir "dev-resources/public/examples/hello/out"
                                    :source-map true
                                    :optimizations :none}}
-                       :cupcake
                        {
+                        :id "cupcake"
                         :source-paths ["src/omreactpixi" "dev-src/examples/cupcake"]
                         :compiler {
                                    :output-to "dev-resources/public/examples/cupcake/out/cupcake.js"
                                    :output-dir "dev-resources/public/examples/cupcake/out"
                                    :optimizations :none
                                    :source-map true}}
-                       :cupcake-minimized
                        {
                         :source-paths ["src/omreactpixi" "dev-src/examples/cupcake"]
                         :compiler {
@@ -88,28 +86,28 @@
                                    :pretty-print false
                                    :closure-warnings {:externs-validation :off
                                                       :non-standard-jsdoc :off}}}
-                       :preloader
                        {
+                        :id "preloader"
                         :source-paths ["src/omreactpixi" "dev-src/examples/preloader"]
                         :compiler {
                                    :output-to "dev-resources/public/examples/preloader/out/preloader.js"
                                    :output-dir "dev-resources/public/examples/preloader/out"
                                    :source-map true
                                    :optimizations :none}}
-                       :interactive
                        {
+                        :id "interactive"
                         :source-paths ["src/omreactpixi" "dev-src/examples/interactive"]
                         :compiler {
                                    :output-to "dev-resources/public/examples/interactive/out/interactive.js"
                                    :output-dir "dev-resources/public/examples/interactive/out"
                                    :source-map true
                                    :optimizations :none}}
-                       :test
                        {
+                        :id "test"
                         :source-paths ["src/omreactpixi" "dev-src/tests"]
                         :compiler {
                                    :output-to "dev-resources/private/out/tests.js"
                                    :output-dir "dev-resources/private/out"
                                    :preamble ["react_pixi/pixi.dev.js" "react_pixi/react-pixi.js"]
                                    :optimizations :simple
-                                   :pretty-print true}}}})
+                                   :pretty-print true}}]})
