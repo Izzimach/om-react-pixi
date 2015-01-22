@@ -20,7 +20,7 @@ A simple example displaying text on a 400px by 300px canvas:
 Include this in your project.clj dependencies:
 
 ```
-[org.clojars.haussman/om-react-pixi "0.2.0-SNAPSHOT"]
+[org.clojars.haussman/om-react-pixi "0.2.2-SNAPSHOT"]
 ```
 This will also include [react-pixi](https://github.com/Izzimach/react-pixi/)
 which itself includes react 0.12.2.
