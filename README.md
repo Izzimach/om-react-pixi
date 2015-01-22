@@ -31,7 +31,7 @@ forms used by [om-tools](https://github.com/Prismatic/om-tools) which are locate
 In either case you may want to pull in the functions using the `:as` form:
 
 ```
-            [omreactpixi.abbrev :as pixi]
+            [omreactpixi.abbrev :as pixi :include-macros true]
 ```
 
 so that you can refer to components using (for example) `pixi/stage` or `pixi/sprite`.
