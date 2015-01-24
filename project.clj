@@ -5,21 +5,21 @@
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2371"]
+                 [org.clojure/clojurescript "0.0-2665"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [org.om/om "0.8.0"]
                  [org.clojars.haussman/react-pixi "0.2.2-SNAPSHOT"]
                  [prismatic/schema "0.3.3"]
                  [prismatic/om-tools "0.3.10"]]
 
-  :profiles {:dev {:dependencies [[figwheel "0.1.5-SNAPSHOT"]
-                                  [ring/ring-core "1.2.2"]
+  :profiles {:dev {:dependencies [[ring/ring-core "1.2.2"]
+                                  [figwheel "0.2.2-SNAPSHOT"]
                                   [ring/ring-jetty-adapter "1.2.2"]
                                   [compojure "1.3.1"]]
                    :source-paths ["src" "dev-src"]}}
 
-  :plugins [[lein-cljsbuild "1.0.3"]
-            [lein-figwheel "0.1.5-SNAPSHOT"]
+  :plugins [[lein-cljsbuild "1.0.4"]
+            [lein-figwheel "0.2.2-SNAPSHOT"]
             [lein-ring "0.8.10"]
             [com.cemerick/clojurescript.test "0.3.3"]]
 
@@ -41,6 +41,14 @@
               
               :builds [
                        {
+                        :id "hello"
+                        :source-paths ["src/omreactpixi" "dev-src/examples/hello"]
+                        :compiler {
+                                   :output-to "dev-resources/public/examples/hello/out/hello.js"
+                                   :output-dir "dev-resources/public/examples/hello/out"
+                                   :source-map true
+                                   :optimizations :none}}
+                       {
                         :id "dev"
                         :source-paths ["src/omreactpixi"]
                         :compiler {
@@ -61,14 +69,6 @@
                                    :closure-warnings {:externs-validation :off
                                                       :non-standard-jsdoc :off}}}
                        {
-                        :id "hello"
-                        :source-paths ["src/omreactpixi" "dev-src/examples/hello"]
-                        :compiler {
-                                   :output-to "dev-resources/public/examples/hello/out/hello.js"
-                                   :output-dir "dev-resources/public/examples/hello/out"
-                                   :source-map true
-                                   :optimizations :none}}
-                       {
                         :id "cupcake"
                         :source-paths ["src/omreactpixi" "dev-src/examples/cupcake"]
                         :compiler {
@@ -77,6 +77,7 @@
                                    :optimizations :none
                                    :source-map true}}
                        {
+                        :id "cupcake-min"
                         :source-paths ["src/omreactpixi" "dev-src/examples/cupcake"]
                         :compiler {
                                    :output-to "dev-resources/public/examples/cupcake/out-min/cupcake.js"
