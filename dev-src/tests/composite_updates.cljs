@@ -25,8 +25,8 @@
     {:target (.getElementById js/document "test-element")}))
 
 ;;
-;; special situation that forces PIXI to replace a composite component child
-;; in-place, which results in React trying to set HTML markup on PIXI nodes.
+;; There is a special situation that forces a composite component to
+;; replace its child which results in React trying to set HTML markup on PIXI nodes.
 ;; since PIXI nodes aren't HTML this will bomb out unless the monkey-patched
 ;; version of createClass is in-place and working
 ;;
@@ -53,31 +53,28 @@
 
 (defn- runcompositetest [test-context]
   (with-test-ctx test-context
-    (om/root
-     (fn [app owner]
-       (om/component
-        (pixi/stage {:width 640
-                     :height 480
-                     :backgroundcolor 0x888888}
-                    (om/build compositetestcomponent app))))
-     compositetestappstate
-     {:target (.getElementById js/document "test-element")})
-    (let [delayedinvoke (fn [delaytime f]
-                          (js/setInterval f delaytime))]
-      (delayedinvoke 1000 (fn []
-                            (swap! compositetestappstate (fn [c] assoc c :state :loaded))
-                            (delayedinvoke 1000 (fn [] (done))))))))
+                 (om/root
+                   (fn [app owner]
+                     (om/component
+                       (pixi/stage {:width           640
+                                    :height          480
+                                    :backgroundcolor 0x888888}
+                                   (om/build compositetestcomponent app))))
+                   compositetestappstate
+                   {:target (.getElementById js/document "test-element")})
+                 (swap! compositetestappstate (fn [c] assoc c :state :loaded))
+                 #_(done)
+                 #_(js/setInterval (fn [] (done)) 100)))
 
-#_(deftest ^:async compositetest []
+#_(deftest compositetest []
   (runcompositetest -test-ctx))
 
 ;;
-;; another composite test
+;; this is the same test as the previous one using multiple reify statements
+;; instead of a multimethod
 ;;
 
 (def componenttest2appstate (atom {}))
-
-
 
 (defn compositetestcomponent2 [app owner]
   (if (:state app)
@@ -106,10 +103,58 @@
      componenttest2appstate
      {:target (. js/document (getElementById "test-element"))})
     (swap! componenttest2appstate (fn [c] (assoc c :state :loaded)))
-    (js/setInterval (fn [] (done)) 1000)))
+    (js/setInterval (fn [] (done))
+                    100)))
 
-(deftest ^:async compositetest2 []
+#_(deftest ^:async compositetest2 []
   (runcompositetest2 -test-ctx))
+
+
+;;
+;; Another composite test: when a composite replaces its child, it
+;; needs to properly update the corresponding PIXI scene graph as well as
+;; its own internal data. Failure to do this means children sometimes
+;; vanish or don't go away when they should
+;;
+
+
+(def componenttest3appstate (atom {:hello "hello"}))
+
+(defn compositetestcomponent3 [app owner]
+  (om/component
+    (if (:loaded app)
+      (pixi/text {:text {:hello app}})
+      (pixi/displayobjectcontainer
+        {}
+        (pixi/text {:text "loading"})))))
+
+(defn runcompositetest3 [test-context]
+  (with-test-ctx test-context
+                 (let [reactinstance (om/root
+                                       (fn [app owner]
+                                         (om/component
+                                           (pixi/stage {:width           640
+                                                        :height          480
+                                                        :backgroundcolor 0x888888
+                                                        :ref  "stage"}
+                                                       (om/build compositetestcomponent3 app))))
+                                       componenttest3appstate
+                                       {:target (. js/document (getElementById "test-element"))})
+                       rootrefs (.-refs reactinstance)
+                       stagenode (aget rootrefs "stage")
+                       stagedisplayobject (.-displayObject stagenode)]
+                   (is (= 1 (.-length (.-children stagedisplayobject))))
+                   (swap! componenttest3appstate (fn [c] (assoc c :loaded true)))
+                   (js/setInterval (fn []
+                                     (swap! componenttest3appstate (fn [c] (assoc c :hello "huh?")))
+                                     (js/setInterval (fn []
+                                                       (is (= 1 (.-length (.-children stagedisplayobject))))
+                                                       (done))
+                                                     100))
+                                   100))))
+
+(deftest ^:async compositetest3 []
+         (runcompositetest3 -test-ctx))
 
 ;;
 ;; basic test fixture

@@ -25,6 +25,8 @@
 
   :ring {:handler webserver.servefromjar/reactpixifromjar :port 8081 }
 
+  :aliases {"autotest" ["do" "clean," "cljsbuild" "auto" "test"]}
+
   :figwheel {
              :http-server-root "public"
              :server-port 8081
@@ -34,8 +36,7 @@
   :cljsbuild {
               ;; lein cljsbuild test
               :test-commands {
-                              "unit" ["node"
-                                      "node_modules/slimerjs/bin/slimerjs"
+                              "unit" ["node" "node_modules/slimerjs/bin/slimerjs"
                                       :runner
                                       "dev-resources/private/out/tests.js"]}
               
@@ -106,6 +107,11 @@
                        {
                         :id "test"
                         :source-paths ["src/omreactpixi" "dev-src/tests"]
+                        ;; auto-run tests after a rebuild
+                        ;; so you can run 'lein cljsbuild auto test'
+                        :notify-command ["node" "node_modules/slimerjs/bin/slimerjs"
+                                         :cljs.test/runner
+                                         "dev-resources/private/out/tests.js"]
                         :compiler {
                                    :output-to "dev-resources/private/out/tests.js"
                                    :output-dir "dev-resources/private/out"
