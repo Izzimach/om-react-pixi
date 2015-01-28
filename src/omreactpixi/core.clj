@@ -10,7 +10,6 @@
   (let [jsname  (symbol "js" (str "ReactPIXI." (name tag)))
         cljname (symbol (clojure.string/lower-case (name tag)))]
   `(defn ~cljname [opts# & children#]
-     (.apply React.createElement
+     (apply React.createElement
              ~jsname
-             nil  ;; context (javascript this)
              (cljs.core/into-array (cons opts# children#))))))
