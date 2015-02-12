@@ -5,7 +5,7 @@
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2665"]
+                 [org.clojure/clojurescript "0.0-2740"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [org.om/om "0.8.0"]
                  [org.clojars.haussman/react-pixi "0.2.3-SNAPSHOT"]
@@ -13,7 +13,7 @@
                  [prismatic/om-tools "0.3.10"]]
 
   :profiles {:dev {:dependencies [[ring/ring-core "1.2.2"]
-                                  [figwheel "0.2.2-SNAPSHOT"]
+                                  [figwheel "0.2.3-SNAPSHOT"]
                                   [ring/ring-jetty-adapter "1.2.2"]
                                   [compojure "1.3.1"]]
                    :source-paths ["src" "dev-src"]}}
