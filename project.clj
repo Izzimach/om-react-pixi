@@ -8,7 +8,7 @@
                  [org.clojure/clojurescript "0.0-2740"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [org.om/om "0.8.0"]
-                 [org.clojars.haussman/react-pixi "0.2.3-SNAPSHOT"]
+                 [org.clojars.haussman/react-pixi "0.3.0"]
                  [prismatic/schema "0.3.3"]
                  [prismatic/om-tools "0.3.10"]]
 
