@@ -1,4 +1,4 @@
-(defproject org.clojars.haussman/om-react-pixi "0.2.0-SNAPSHOT"
+(defproject org.clojars.haussman/om-react-pixi "0.3.0"
   :description "ClojureScript definitions for using om with react-pixi"
   :url "https://github.com/Izzimach/om-react-pixi"
   :license {:name "Apache 2.0"

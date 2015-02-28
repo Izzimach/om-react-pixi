@@ -17,11 +17,12 @@ A simple example displaying text on a 400px by 300px canvas:
 
 ## How to Include and Use
 
-Include this in your project.clj dependencies:
+The latest version of 0.3.0. In your `project.clj` include this dependency:
 
 ```
-[org.clojars.haussman/om-react-pixi "0.2.2-SNAPSHOT"]
+[org.clojars.haussman/om-react-pixi "0.3.0"]
 ```
+
 This will also include [react-pixi](https://github.com/Izzimach/react-pixi/)
 which itself includes react 0.12.2.
 
