@@ -1,25 +1,25 @@
-(defproject org.clojars.haussman/om-react-pixi "0.3.0"
+(defproject org.clojars.haussman/om-react-pixi "0.3.1"
   :description "ClojureScript definitions for using om with react-pixi"
   :url "https://github.com/Izzimach/om-react-pixi"
   :license {:name "Apache 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2740"]
+                 [org.clojure/clojurescript "0.0-2843"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [org.om/om "0.8.0"]
-                 [org.clojars.haussman/react-pixi "0.3.0"]
-                 [prismatic/schema "0.3.3"]
+                 [org.clojars.haussman/react-pixi "0.3.1"]
+                 [prismatic/schema "0.3.7"]
                  [prismatic/om-tools "0.3.10"]]
 
   :profiles {:dev {:dependencies [[ring/ring-core "1.2.2"]
-                                  [figwheel "0.2.3-SNAPSHOT"]
+                                  [figwheel "0.2.5-SNAPSHOT"]
                                   [ring/ring-jetty-adapter "1.2.2"]
                                   [compojure "1.3.1"]]
                    :source-paths ["src" "dev-src"]}}
 
-  :plugins [[lein-cljsbuild "1.0.4"]
-            [lein-figwheel "0.2.2-SNAPSHOT"]
+  :plugins [[lein-cljsbuild "1.0.5"]
+            [lein-figwheel "0.2.5-SNAPSHOT"]
             [lein-ring "0.8.10"]
             [com.cemerick/clojurescript.test "0.3.3"]]
 
