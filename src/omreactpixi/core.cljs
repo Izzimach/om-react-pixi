@@ -14,5 +14,6 @@
 (orp/defn-pixi-element BitmapText)
 (orp/defn-pixi-element Sprite)
 (orp/defn-pixi-element DisplayObjectContainer)
+(orp/defn-pixi-element SpriteBatch)
 (orp/defn-pixi-element TilingSprite)
 

@@ -1,4 +1,4 @@
-(defproject org.clojars.haussman/om-react-pixi "0.3.1"
+(defproject org.clojars.haussman/om-react-pixi "0.4.0"
   :description "ClojureScript definitions for using om with react-pixi"
   :url "https://github.com/Izzimach/om-react-pixi"
   :license {:name "Apache 2.0"
@@ -7,8 +7,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2843"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
-                 [org.om/om "0.8.0"]
-                 [org.clojars.haussman/react-pixi "0.3.1"]
+                 [org.clojars.haussman/react-pixi "0.4.0"]
+                 [org.omcljs/om "0.8.8"]
                  [prismatic/schema "0.3.7"]
                  [prismatic/om-tools "0.3.10"]]
 
@@ -23,7 +23,7 @@
             [lein-ring "0.8.10"]
             [com.cemerick/clojurescript.test "0.3.3"]]
 
-  :ring {:handler webserver.servefromjar/reactpixifromjar :port 8081 }
+  :ring {:port 8081}
 
   :aliases {"autotest" ["do" "clean," "cljsbuild" "auto" "test"]}
 
@@ -39,7 +39,7 @@
                               "unit" ["node" "node_modules/slimerjs/bin/slimerjs"
                                       :runner
                                       "dev-resources/private/out/tests.js"]}
-              
+
               :builds [
                        {
                         :id "hello"
