@@ -62,9 +62,9 @@
 (defcomponentk removeablesprites [[:data sprites deletechannel] owner]
   (display-name [_] "RemovableSprites")
   (render [_] (let [bindimageandchannel (fn [spr index] {:spritedata (assoc spr :image (assetpath "lollipopGreen.png"))
-                                           :clickchannel deletechannel :key (:key spr)})]
+                                                         :clickchannel deletechannel :key (:key spr)})]
                 ;; this is still kind of yucky - fix up based on om-tools macro?
-                (apply pixi/displayobjectcontainer
+                (apply pixi/spritebatch
                        {:x 0 :y 0}
                        (om/build-all clickablesprite (vals sprites) {:key :key :fn bindimageandchannel})))))
 
@@ -101,7 +101,7 @@
                 (let [addchannel (:addspritechannel state)
                       deletechannel (:deletespritechannel state)
                       fontstyle {:font "40 Comic_Neue_Angular"}
-                      fonttint 16rff88ff88
+                      fonttint 16r448844a8
                       halfheight (/ height 2)
                       halfwidth (/ width 2)
                       spritecluster (om/build removeablesprites {:sprites sprites :deletechannel (:deletespritechannel state)})]

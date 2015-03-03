@@ -15,5 +15,6 @@
 (abbrev/defn-pixi-element-abbrev Text)
 (abbrev/defn-pixi-element-abbrev BitmapText)
 (abbrev/defn-pixi-element-abbrev Sprite)
+(abbrev/defn-pixi-element-abbrev SpriteBatch)
 (abbrev/defn-pixi-element-abbrev DisplayObjectContainer)
 (abbrev/defn-pixi-element-abbrev TilingSprite)
