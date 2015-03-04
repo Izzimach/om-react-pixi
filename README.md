@@ -43,6 +43,7 @@ Includes the standard items from [Pixi.js](https://github.com/GoodBoyDigital/pix
 
 - Stage
 - Sprite
+- SpriteBatch
 - TilingSprite
 - Text
 - BitmapText
