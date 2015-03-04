@@ -64,7 +64,7 @@
   (render [_] (let [bindimageandchannel (fn [spr index] {:spritedata (assoc spr :image (assetpath "lollipopGreen.png"))
                                                          :clickchannel deletechannel :key (:key spr)})]
                 ;; this is still kind of yucky - fix up based on om-tools macro?
-                (apply pixi/spritebatch
+                (apply pixi/displayobjectcontainer
                        {:x 0 :y 0}
                        (om/build-all clickablesprite (vals sprites) {:key :key :fn bindimageandchannel})))))
 
@@ -109,7 +109,7 @@
                               (pixi/bitmaptext {:text "Click the cherry to add a lollipop" :x 10 :y 10 :tint fonttint :style fontstyle :key "text1"})
                               (pixi/bitmaptext {:text "Click a lollipop to remove it" :x 10 :y 60 :tint fonttint :style fontstyle :key "text2"})
                               (om/build clickablesprite {:spritedata {:x 100 :y 150 :key "addbutton" :interactive true :image (assetpath "cherry.png")} :clickchannel (:addspritechannel state)})
-                              (om/build spinelement {:spinelement spritecluster :x halfwidth :y halfheight :spinspeed 3})
+                              (om/build spinelement {:spinelement spritecluster :x halfwidth :y halfheight :spinspeed 1})
                               ))))
 
 ;;

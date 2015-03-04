@@ -7,8 +7,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2843"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
+                 [org.omcljs/om "0.8.8" :exclusions [cljsjs/react]]
                  [org.clojars.haussman/react-pixi "0.4.0"]
-                 [org.omcljs/om "0.8.8"]
                  [prismatic/schema "0.3.7"]
                  [prismatic/om-tools "0.3.10"]]
 
