@@ -17,14 +17,14 @@ A simple example displaying text on a 400px by 300px canvas:
 
 ## How to Include and Use
 
-The latest version is 0.4.1. In your `project.clj` include this dependency:
+The latest version is 0.5.0. In your `project.clj` include this dependency:
 
 ```
-[org.clojars.haussman/om-react-pixi "0.4.1"]
+[org.clojars.haussman/om-react-pixi "0.5.0"]
 ```
 
 This will also include [react-pixi](https://github.com/Izzimach/react-pixi/)
-which itself includes react 0.12.2.
+which itself includes react 0.13.1.
 
 Standard components are in the `omreactpixi.core` namespace. There are also abbreviated forms that are based on the
 forms used by [om-tools](https://github.com/Prismatic/om-tools) which are located in `omreactpixi.abbrev`.
